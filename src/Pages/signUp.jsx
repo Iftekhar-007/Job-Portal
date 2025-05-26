@@ -1,8 +1,10 @@
-import React from "react";
+import React, { use } from "react";
 import rocket from "../assets/rocket.json";
 import Lottie from "lottie-react";
+import { AuthContext } from "../Context/AuthContext";
 
-const signUp = () => {
+const SignUp = () => {
+  const { signUpWithEmail, loader } = use(AuthContext);
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -10,6 +12,12 @@ const signUp = () => {
     const password = form.password.value;
     const newUser = { email, password };
     console.log(newUser);
+
+    signUpWithEmail(email, password)
+      .then((result) => console.log(result.user))
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
   return (
     <>
@@ -56,4 +64,4 @@ const signUp = () => {
   );
 };
 
-export default signUp;
+export default SignUp;

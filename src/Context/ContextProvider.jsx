@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { AuthContext } from "./AuthContext";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+// import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+// import { createUserWithEmailAndPassword } from "firebase/auth/web-extension";
 
 const ContextProvider = ({ children }) => {
   const [loader, setLoader] = useState(true);
   const signUpWithEmail = (email, password) => {
     setLoader(true);
-    return createUserWithEmailAndPassword(email, password, auth);
+    return createUserWithEmailAndPassword(auth, email, password);
   };
   const userInfo = {
     signUpWithEmail,
