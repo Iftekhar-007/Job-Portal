@@ -5,7 +5,7 @@ import { NavLink } from "react-router";
 import Lottie from "lottie-react";
 
 const Login = () => {
-  const { loginWithEmail, loader } = use(AuthContext);
+  const { loginWithEmail } = use(AuthContext);
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;

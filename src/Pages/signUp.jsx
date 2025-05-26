@@ -5,7 +5,7 @@ import { AuthContext } from "../Context/AuthContext";
 import { NavLink } from "react-router";
 
 const SignUp = () => {
-  const { signUpWithEmail, loader } = use(AuthContext);
+  const { signUpWithEmail } = use(AuthContext);
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
