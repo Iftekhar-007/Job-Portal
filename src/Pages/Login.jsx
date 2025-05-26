@@ -1,12 +1,12 @@
 import React, { use } from "react";
-import rocket from "../assets/rocket.json";
-import Lottie from "lottie-react";
 import { AuthContext } from "../Context/AuthContext";
+import rocket from "../assets/rocket.json";
 import { NavLink } from "react-router";
+import Lottie from "lottie-react";
 
-const SignUp = () => {
-  const { signUpWithEmail, loader } = use(AuthContext);
-  const handleSignUp = (e) => {
+const Login = () => {
+  const { loginWithEmail, loader } = use(AuthContext);
+  const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -14,7 +14,7 @@ const SignUp = () => {
     const newUser = { email, password };
     console.log(newUser);
 
-    signUpWithEmail(email, password)
+    loginWithEmail(email, password)
       .then((result) => console.log(result.user))
       .catch((error) => {
         console.log(error.message);
@@ -22,7 +22,7 @@ const SignUp = () => {
   };
   return (
     <>
-      <title>Sign Up || Job Portal</title>
+      <title>Sign In || Job Portal</title>
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left lg:ml-32">
@@ -34,8 +34,8 @@ const SignUp = () => {
           </div>
           <div className="card bg-base-100 w-full  shrink-0 shadow-2xl">
             <div className="card-body">
-              <h1 className="text-5xl font-bold text-center">Sign Up Now!</h1>
-              <form onSubmit={handleSignUp}>
+              <h1 className="text-5xl font-bold text-center">Login now!</h1>
+              <form onSubmit={handleSignIn}>
                 <fieldset className="fieldset">
                   <label className="label">Email</label>
                   <input
@@ -58,7 +58,7 @@ const SignUp = () => {
                 </fieldset>
               </form>
               <p>
-                Have an account already ? <NavLink to="/login">LogIn</NavLink>
+                New here ? <NavLink to="/signup">Sign Up Now!</NavLink>
               </p>
             </div>
           </div>
@@ -68,4 +68,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;
