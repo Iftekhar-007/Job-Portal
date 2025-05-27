@@ -3,6 +3,7 @@ import { IoBookmarksOutline } from "react-icons/io5";
 import location from "../assets/location.json";
 import Lottie from "lottie-react";
 import { VscGitStashApply } from "react-icons/vsc";
+import { Link } from "react-router";
 
 const Job = ({ job }) => {
   //   console.log(jobs);
@@ -34,21 +35,24 @@ const Job = ({ job }) => {
           </div>
 
           <p>{job.description}</p>
-          <div className="grid grid-cols-2 max-w-[230px] gap-2">
+          <div className="card-actions mt-10">
             {job.requirements.map((req, index) => (
               <div
-                className="p-2 border-white border-2 rounded-2xl"
+                className="p-2 border-white border-2 rounded-[12px] mb-2"
                 key={index}
               >
                 {req}
               </div>
             ))}
           </div>
-          <div className="card-actions">
-            <button className="btn border-white bg-transparent w-full rounded-4xl flex items-center gap-2">
+          <div className="card-actions mt-8">
+            <Link
+              to={`/jobs/${job._id}`}
+              className="btn border-white bg-transparent w-full rounded-4xl flex items-center gap-2"
+            >
               Apply Now
               <VscGitStashApply />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
