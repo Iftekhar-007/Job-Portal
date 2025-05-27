@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 const Banner = () => {
   return (
     <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse lg:justify-between w-[1440px] lg:mx-auto">
+      <div className="hero-content flex-col lg:flex-row-reverse lg:justify-between lg:w-[1440px] lg:mx-auto">
         <div>
           <motion.img
             animate={{
