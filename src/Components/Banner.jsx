@@ -8,9 +8,8 @@ const Banner = () => {
         <div>
           <motion.img
             animate={{
-              x: [0, 200, 0],
               y: [0, 100, 0],
-              transition: { duration: 5, repeat: Infinity },
+              transition: { duration: 3, repeat: Infinity },
             }}
             src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
             className="max-w-sm rounded-lg shadow-2xl"
@@ -19,8 +18,8 @@ const Banner = () => {
           <motion.img
             animate={{
               x: [0, 100, 0],
-              y: [0, -100, 0],
-              transition: { duration: 10, repeat: Infinity },
+
+              transition: { duration: 5, repeat: Infinity },
             }}
             src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
             className="max-w-sm rounded-lg shadow-2xl"
