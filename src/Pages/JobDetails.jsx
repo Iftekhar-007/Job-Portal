@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 
 const JobDetails = () => {
   const [jobDetail, setJobDetail] = useState(null);
@@ -29,6 +29,7 @@ const JobDetails = () => {
   return (
     <div className="w-[1440px] mx-auto">
       <h2>{jobDetail.title}</h2>
+      <Link to={`/jobapply/${jobDetail._id}`}>Apply Now!</Link>
     </div>
   );
 };
