@@ -1,11 +1,15 @@
 import React, { use } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import rocket from "../assets/rocket.json";
-import { NavLink } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import Lottie from "lottie-react";
 
 const Login = () => {
   const { loginWithEmail } = use(AuthContext);
+  const location = useLocation();
+  console.log(location);
+  const navigate = useNavigate();
+  const from = location.state || "/";
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,7 +19,10 @@ const Login = () => {
     console.log(newUser);
 
     loginWithEmail(email, password)
-      .then((result) => console.log(result.user))
+      .then((result) => {
+        console.log(result.user);
+        navigate(from);
+      })
       .catch((error) => {
         console.log(error.message);
       });
