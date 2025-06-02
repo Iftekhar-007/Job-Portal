@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 
 const JobDetails = () => {
@@ -15,7 +15,7 @@ const JobDetails = () => {
         setLoading(false);
       })
       .then((error) => {
-        console.log(error);
+        console.log(error.message);
       });
   }, [id]);
 
@@ -28,8 +28,12 @@ const JobDetails = () => {
   }
   return (
     <div className="w-[1440px] mx-auto">
-      <h2>{jobDetail.title}</h2>
-      <Link to={`/jobapply/${jobDetail._id}`}>Apply Now!</Link>
+      <Suspense
+        fallback={<span className="loading loading-spinner text-error"></span>}
+      >
+        <h2>{jobDetail.title}</h2>
+        <Link to={`/jobapply/${jobDetail._id}`}>Apply Now!</Link>
+      </Suspense>
     </div>
   );
 };

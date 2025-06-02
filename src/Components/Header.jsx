@@ -40,9 +40,7 @@ const Header = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <Link to="/">Home</Link>
-            <li>
-              <a>Item 3</a>
-            </li>
+            <Link>Item 3</Link>
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">daisyUI</a>
@@ -50,9 +48,7 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <Link to="/">Home</Link>
-          <li>
-            <a>Item 3</a>
-          </li>
+          <Link className="ml-3">item</Link>
         </ul>
       </div>
       <div className="navbar-end">
