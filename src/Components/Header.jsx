@@ -14,6 +14,7 @@ const Header = () => {
         console.log(error.message);
       });
   };
+
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -41,6 +42,7 @@ const Header = () => {
           >
             <Link to="/">Home</Link>
             <Link>Item 3</Link>
+            <Link to={`/myapplications/${user?.email}`}>My Applications</Link>
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">daisyUI</a>
@@ -48,7 +50,8 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <Link to="/">Home</Link>
-          <Link className="ml-3">item</Link>
+          <Link className="mx-3">item</Link>
+          <Link to={`/myapplications`}>My Applications</Link>
         </ul>
       </div>
       <div className="navbar-end">
