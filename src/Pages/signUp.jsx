@@ -9,9 +9,11 @@ const SignUp = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    const newUser = { email, password };
+    const newUser = { email, password, name, photo };
     console.log(newUser);
 
     signUpWithEmail(email, password)
@@ -37,6 +39,22 @@ const SignUp = () => {
               <h1 className="text-5xl font-bold text-center">Sign Up Now!</h1>
               <form onSubmit={handleSignUp}>
                 <fieldset className="fieldset">
+                  <label className="label">Name</label>
+                  <input
+                    type="text"
+                    className="input w-full"
+                    placeholder="Name"
+                    name="name"
+                  />
+
+                  <label className="label">PhotoURL</label>
+                  <input
+                    type="text"
+                    className="input w-full"
+                    placeholder="photoURL"
+                    name="photo"
+                  />
+
                   <label className="label">Email</label>
                   <input
                     type="email"
