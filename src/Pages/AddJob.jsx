@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 
 const AddJob = () => {
@@ -5,9 +6,8 @@ const AddJob = () => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const { max, min, currency, ...jobData } = Object.fromEntries(
-      formData.entries()
-    );
+    const { requirements, responsibilities, max, min, currency, ...jobData } =
+      Object.fromEntries(formData.entries());
     console.log(jobData);
 
     jobData.salaryRnage = {
@@ -15,6 +15,23 @@ const AddJob = () => {
       min: min,
       currency: currency,
     };
+
+    jobData.status = "active";
+
+    jobData.requirements = requirements
+      .split(/\n|,/)
+      .map((item) => item.trim(" "))
+      .filter((item) => item);
+
+    jobData.responsibilities = responsibilities
+      .split(/\n|,/)
+      .map((item) => item.trim(" "))
+      .filter((item) => item);
+
+    axios
+      .post("http://localhost:3000/jobs", jobData)
+      .then((res) => console.log(res.data))
+      .then((error) => console.log(error));
   };
   return (
     <div className="lg:w-[1440px] mx-auto my-20">
