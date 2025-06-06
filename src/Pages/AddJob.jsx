@@ -5,8 +5,16 @@ const AddJob = () => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const jobData = Object.fromEntries(formData.entries());
+    const { max, min, currency, ...jobData } = Object.fromEntries(
+      formData.entries()
+    );
     console.log(jobData);
+
+    jobData.salaryRnage = {
+      max: max,
+      min: min,
+      currency: currency,
+    };
   };
   return (
     <div className="lg:w-[1440px] mx-auto my-20">
@@ -92,6 +100,7 @@ const AddJob = () => {
                 <select
                   defaultValue="Select a currency"
                   className="select w-full"
+                  name="currency"
                 >
                   <option disabled={true}>Select a currency</option>
                   <option>USD</option>
