@@ -52,6 +52,9 @@ const Header = () => {
           <Link to="/">Home</Link>
           <Link className="mx-3">item</Link>
           <Link to={`/myapplications`}>My Applications</Link>
+          <Link to={"/addjobs"} className="mx-3">
+            Add Job
+          </Link>
         </ul>
       </div>
       <div className="navbar-end">

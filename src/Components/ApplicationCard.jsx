@@ -5,7 +5,6 @@ const ApplicationCard = ({ app }) => {
   console.log(app);
   return (
     <>
-      <Thead></Thead>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -22,14 +21,14 @@ const ApplicationCard = ({ app }) => {
                   <div className="avatar">
                     <div className="mask mask-squircle h-12 w-12">
                       <img
-                        src="https://img.daisyui.com/images/profile/demo/2@94.webp"
+                        src={app.company_logo}
                         alt="Avatar Tailwind CSS Component"
                       />
                     </div>
                   </div>
                   <div>
-                    <div className="font-bold">Hart Hagerty</div>
-                    <div className="text-sm opacity-50">United States</div>
+                    <div className="font-bold">{app.title}</div>
+                    <div className="text-sm opacity-50">{app.company}</div>
                   </div>
                 </div>
               </td>
