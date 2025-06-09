@@ -1,5 +1,6 @@
 import React, { use } from "react";
 import JobCard from "./JobCard";
+import { Link } from "react-router";
 // import { keyframes } from "motion";
 // import { div } from "motion/react-client";
 
@@ -43,7 +44,7 @@ const AddedjobsList = ({ MyAddedJobsApi }) => {
                 <td>{job.location}</td>
                 <td>{job.applicationDeadline}</td>
                 <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
+                  <Link to={`/applications/${job._id}`}>View Details</Link>
                 </th>
               </tr>
             ))}
