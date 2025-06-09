@@ -55,6 +55,9 @@ const Header = () => {
           <Link to={"/addjobs"} className="mx-3">
             Add Job
           </Link>
+          <Link to="/jobs/myaddedjobs" className="mr-3">
+            My Added Jobs
+          </Link>
         </ul>
       </div>
       <div className="navbar-end">
