@@ -8,6 +8,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import axios from "axios";
 // import { createUserWithEmailAndPassword } from "firebase/auth/web-extension";
 
 const ContextProvider = ({ children }) => {
@@ -33,6 +34,15 @@ const ContextProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoader(false);
+      if (currentUser?.email) {
+        const userData = { email: currentUser.email };
+        axios
+          .post("http://localhost:3000/jwt", userData, {
+            withCredentials: true,
+          })
+          .then((res) => console.log(res.data))
+          .then((error) => console.log(error));
+      }
     });
     return unSubscribe;
   }, []);
