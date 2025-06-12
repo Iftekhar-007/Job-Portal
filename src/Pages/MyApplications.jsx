@@ -8,7 +8,9 @@ const MyApplications = () => {
   //   console.log(applications);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/applications?email=${user.email}`)
+    fetch(`http://localhost:3000/applications?email=${user.email}`, {
+      credentials: "include",
+    })
       .then((res) => res.json())
       .then((data) => {
         setApplications(data);
