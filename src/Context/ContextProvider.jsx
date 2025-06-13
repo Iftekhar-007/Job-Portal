@@ -30,19 +30,18 @@ const ContextProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const getToken = async () => {
+    const currentUser = auth.currentUser;
+    if (currentUser) {
+      return await currentUser.getIdToken(true); // force refresh
+    }
+    return null;
+  };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoader(false);
-      if (currentUser?.email) {
-        const userData = { email: currentUser.email };
-        axios
-          .post("http://localhost:3000/jwt", userData, {
-            withCredentials: true,
-          })
-          .then((res) => console.log(res.data))
-          .then((error) => console.log(error));
-      }
     });
     return unSubscribe;
   }, []);
@@ -52,6 +51,7 @@ const ContextProvider = ({ children }) => {
     signUpWithEmail,
     loader,
     logOut,
+    getToken,
   };
   return (
     <div>
